@@ -1,33 +1,67 @@
 <template>
   <el-container>
     <el-row>
-      <el-col :span="24" class="room-banner" v-if="roomDetail.imageUrl !== undefined">
-        <el-image class="banner-img" :src="roomDetail.imageUrl[2]" :fit="'cover'"></el-image>
-        <el-image class="banner-img" :src="roomDetail.imageUrl[0]" :fit="'cover'"></el-image>
-        <el-image class="banner-img" :src="roomDetail.imageUrl[1]" :fit="'cover'"></el-image>
+      <el-col
+        :span="24"
+        class="room-banner"
+        v-if="roomDetail.imageUrl !== undefined"
+      >
+        <el-image
+          class="banner-img"
+          :src="roomDetail.imageUrl[2]"
+          :fit="'cover'"
+        ></el-image>
+        <el-image
+          class="banner-img"
+          :src="roomDetail.imageUrl[0]"
+          :fit="'cover'"
+        ></el-image>
+        <el-image
+          class="banner-img"
+          :src="roomDetail.imageUrl[1]"
+          :fit="'cover'"
+        ></el-image>
       </el-col>
-      <el-image class="banner-logo" :src="require('@assets/img/logo_block.svg')" :fit="'cover'"></el-image>
+      <router-link :to="{ name: 'Main' }"
+        ><el-image
+          class="banner-logo"
+          :src="require('@assets/img/logo_block.svg')"
+          :fit="'cover'"
+        ></el-image
+      ></router-link>
 
       <el-col :span="12" :xl="12" :lg="12" :md="18" :sm="24" :xs="24">
-        <div class="room-info-content" v-if="roomDetail.descriptionShort !== undefined">
-          <span class="info-name">{{roomDetail.name}}</span>
-          <span
-            class="info-description-short"
-          >客房人數限制:{{roomDetail.descriptionShort.GuestMin}}~{{roomDetail.descriptionShort.GuestMax}}人</span>
-          <span class="info-description-short">床型:{{roomDetail.descriptionShort.Bed.toString()}}</span>
-          <span class="info-description-short">衛浴數量:{{bathNum}}間</span>
-          <span class="info-description-short">房間大小:{{roomDetail.descriptionShort.Footage}}平方公尺</span>
-          <span class="info-description">{{description}}</span>
+        <div
+          class="room-info-content"
+          v-if="roomDetail.descriptionShort !== undefined"
+        >
+          <span class="info-name">{{ roomDetail.name }}</span>
+          <span class="info-description-short"
+            >客房人數限制:{{ roomDetail.descriptionShort.GuestMin }}~{{
+              roomDetail.descriptionShort.GuestMax
+            }}人</span
+          >
+          <span class="info-description-short"
+            >床型:{{ roomDetail.descriptionShort.Bed.toString() }}</span
+          >
+          <span class="info-description-short">衛浴數量:{{ bathNum }}間</span>
+          <span class="info-description-short"
+            >房間大小:{{ roomDetail.descriptionShort.Footage }}平方公尺</span
+          >
+          <span class="info-description">{{ description }}</span>
           <span class="info-gap">\\\</span>
           <el-col :span="12" class="info-check-content">
             <span class="info-check">Check In</span>
-            <span
-              class="info-time"
-            >{{roomDetail.checkInAndOut.checkInEarly}} － {{roomDetail.checkInAndOut.checkInLate}}</span>
+            <span class="info-time"
+              >{{ roomDetail.checkInAndOut.checkInEarly }} －
+              {{ roomDetail.checkInAndOut.checkInLate }}</span
+            >
           </el-col>
           <el-col :span="12" class="info-check-content">
             <span class="info-check">Check Out</span>
-            <span class="info-time">{{roomDetail.checkInAndOut.checkOut}}</span>
+            <span class="info-time">{{
+              roomDetail.checkInAndOut.checkOut
+            }}</span>
           </el-col>
           <el-col :span="24" class="info-icon-content">
             <el-col
@@ -39,20 +73,24 @@
               :xs="24"
               class="info-icon"
               :class="setIconColor(iconItem.key)"
-              v-for="(iconItem,iconKey) in infoIcon"
+              v-for="(iconItem, iconKey) in infoIcon"
               :key="iconKey"
             >
               <i class="icon" :class="iconItem.class"></i>
-              <span>{{iconItem.title}}</span>
+              <span>{{ iconItem.title }}</span>
             </el-col>
           </el-col>
         </div>
       </el-col>
       <el-col :span="3" :xl="3" :lg="3" :md="6" :sm="24" :xs="24">
         <div class="room-price-content">
-          <span class="info-normal-price">NT.{{roomDetail.normalDayPrice}}</span>
+          <span class="info-normal-price"
+            >NT.{{ roomDetail.normalDayPrice }}</span
+          >
           <span class="info-normal-text">平日(一~四)</span>
-          <span class="info-holiday-price">NT.{{roomDetail.holidayPrice}}</span>
+          <span class="info-holiday-price"
+            >NT.{{ roomDetail.holidayPrice }}</span
+          >
           <span class="info-normal-text">假日(五~日)</span>
         </div>
       </el-col>
@@ -65,28 +103,39 @@
             :open="true"
             :disabled-date="disabledDate"
           ></date-picker>
-          <el-button type="info" class="book-btn" @click="onBook">預約</el-button>
+          <el-button type="info" class="book-btn" @click="onBook"
+            >預約</el-button
+          >
         </div>
       </el-col>
     </el-row>
-    <el-dialog title="預約時段" :visible.sync="centerDialogVisible" width="40%" :show-close="false">
+    <el-dialog
+      title="預約時段"
+      :visible.sync="centerDialogVisible"
+      width="40%"
+      :show-close="false"
+    >
       <el-form ref="form" label-width="80px" size="mini">
         <el-form-item label="姓名">
           <el-input
             v-model="axiosData.name"
-            :class="{'has-danger':error.name.hasError}"
+            :class="{ 'has-danger': error.name.hasError }"
             @focus="error.name.hasError = false"
           ></el-input>
         </el-form-item>
-        <div class="error-msg" v-show="error.name.hasError">{{error.name.msg}}</div>
+        <div class="error-msg" v-show="error.name.hasError">
+          {{ error.name.msg }}
+        </div>
         <el-form-item label="聯絡電話">
           <el-input
             v-model="axiosData.tel"
-            :class="{'has-danger':error.tel.hasError}"
+            :class="{ 'has-danger': error.tel.hasError }"
             @focus="error.tel.hasError = false"
           ></el-input>
         </el-form-item>
-        <div class="error-msg" v-show="error.tel.hasError">{{error.tel.msg}}</div>
+        <div class="error-msg" v-show="error.tel.hasError">
+          {{ error.tel.msg }}
+        </div>
         <el-form-item label="預約日期">
           <el-date-picker
             v-model="bookingDate"
@@ -95,24 +144,26 @@
             start-placeholder="開始日期"
             end-placeholder="结束日期"
             :picker-options="pickerOptions"
-            :class="{'has-danger':error.date.hasError}"
+            :class="{ 'has-danger': error.date.hasError }"
             @focus="error.date.hasError = false"
           ></el-date-picker>
         </el-form-item>
-        <div class="error-msg" v-show="error.date.hasError">{{error.date.msg}}</div>
+        <div class="error-msg" v-show="error.date.hasError">
+          {{ error.date.msg }}
+        </div>
       </el-form>
       <div class="weekend-period-content">
         <div class="weekend-period">
           <span>假日時段</span>
-          <span>{{weekendCount}}夜</span>
+          <span>{{ weekendCount }}夜</span>
         </div>
         <div class="weekend-period">
           <span>平日時段</span>
-          <span>{{weekDayCount}}夜</span>
+          <span>{{ weekDayCount }}夜</span>
         </div>
       </div>
       <div class="sub-total-content">
-        <span>= NT.{{subTotal}}</span>
+        <span>= NT.{{ subTotal }}</span>
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="centerDialogVisible = false">取消</el-button>
@@ -161,7 +212,7 @@ export default {
       pickerOptions: {
         disabledDate(time) {
           return time.getTime() < Date.now();
-        },
+        }
       }
     }
   },
@@ -218,8 +269,10 @@ export default {
       return date < new Date(new Date());
     },
     onBook() {
-      this.centerDialogVisible = true
-      this.bookingDate = this.tempBookingDate
+      this.weekDayCount = 0;
+      this.weekendCount = 0;
+      this.centerDialogVisible = true;
+      this.bookingDate = this.tempBookingDate;
 
     },
     onConfirm() {
