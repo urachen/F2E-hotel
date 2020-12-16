@@ -1,0 +1,360 @@
+$color-grey-light: #999999;
+$color-grey-normal: #666666;
+$color-grey-dark: #333333;
+
+body {
+  margin: 0px;
+}
+.room-row {
+  margin-left: 60px;
+  margin-right: 60px;
+}
+.cover {
+  height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+.logo {
+  position: absolute;
+  top: 47px;
+  left: 54px;
+}
+.room-content {
+  position: absolute;
+  background-color: #ffffff;
+  top: 49px;
+  right: 1px;
+}
+.room-list {
+  width: 305px;
+  // height:404px;
+  list-style-type: none;
+  // padding-left: 34px;
+  // padding-right: 34px;
+  padding-left: 0px;
+  line-height: 37px;
+}
+.room-item {
+  font-family: NotoSansCJKtc-Light;
+  font-weight: 300;
+  font-size: 14px;
+  color: #000000;
+  letter-spacing: 1.46px;
+  a {
+    text-decoration: none;
+    color: #000000;
+    // display:block;
+
+    &:hover {
+      color: $color-grey-normal;
+    }
+  }
+}
+.room-item-unactive {
+  display: inline-block;
+}
+.room-item-active {
+  display: inline-block;
+}
+.social-content {
+  position: absolute;
+  top: 75%;
+  right: 235px;
+
+  img {
+    // position: absolute;
+    margin-right: 10px;
+  }
+}
+.contact-content {
+  position: absolute;
+  top: 80%;
+  right: 30px;
+
+  ul {
+    list-style-type: none;
+  }
+  li {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 10px;
+    // line-height: 20px;
+  }
+  span {
+    // position: absolute;
+    margin-left: 10px;
+    color: #ffffff;
+    text-align: center;
+    font-family: NotoSansCJKtc-Light;
+  }
+}
+.room-detail-content {
+  position: absolute;
+  top: 75%;
+  left: 54px;
+  font-family: NotoSansCJKtc-DemiLight;
+  color: #ffffff;
+
+  .room-detail-num {
+    font-size: 66px;
+    line-height: 98pt;
+    display: block;
+  }
+  .room-detail-dash {
+    background-color: #ffffff;
+    opacity: 0.4;
+    margin-top: -50px;
+    width: 80px;
+    height: 15px;
+    font-size: 66px;
+    display: block;
+  }
+  .room-detail-name {
+    font-size: 24pt;
+    letter-spacing: 2.51px;
+    line-height: 35pt;
+  }
+}
+.room-banner {
+  height: 50vh;
+  width: auto;
+  position: relative;
+}
+.banner-logo {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+}
+.banner-img:first-child {
+  height: 100%;
+  width: 70%;
+  float: left;
+}
+.banner-img:nth-child(2) {
+  height: 50%;
+  width: 30%;
+  float: left;
+}
+.banner-img:nth-child(3) {
+  height: 50%;
+  width: 30%;
+  float: left;
+}
+.room-info-content {
+  margin-top: 30px;
+  margin-left: 60px;
+  margin-right: 60px;
+  display: block;
+
+  .info-name {
+    font-family: NotoSansCJKtc-Medium;
+    font-size: 36px;
+    color: #000000;
+    letter-spacing: 3.76px;
+    display: block;
+    margin-bottom: 30px;
+  }
+  .info-description-short {
+    font-family: NotoSansCJKtc-Light;
+    font-size: 14px;
+    color: #000000;
+    letter-spacing: 3.76px;
+    line-height: 31px;
+    display: block;
+  }
+  .info-description {
+    font-family: NotoSansCJKtc-Light;
+    font-size: 12px;
+    color: #000000;
+    letter-spacing: 1.25px;
+    text-align: justify;
+    line-height: 20px;
+    display: block;
+    margin-top: 20px;
+  }
+  .info-gap {
+    font-size: 9px;
+    letter-spacing: 5px;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .info-check-content {
+    .info-check {
+      font-family: NotoSansCJKtc-Light;
+      font-size: 14px;
+      color: #000000;
+      letter-spacing: 1.46px;
+      display: block;
+    }
+    .info-time {
+      font-family: NotoSansCJKtc-Light;
+      font-size: 21px;
+      color: #000000;
+      letter-spacing: 2.19px;
+      display: block;
+    }
+  }
+  .info-icon-content {
+    margin-top: 30px;
+    padding: 30px;
+    background-color: #f0f0f0;
+
+    .info-icon {
+      display: flex;
+      align-items: center;
+      line-height: 50px;
+      font-family: NotoSansCJKtc-Light;
+      font-size: 12px;
+      color: #000000;
+      letter-spacing: 1.25px;
+    }
+    .icon {
+      font-size: 21px;
+      margin-right: 20px;
+    }
+    .grey {
+      opacity: 0.3;
+      color: #000000;
+    }
+  }
+}
+.room-price-content {
+  margin-top: 50px;
+  display: block;
+  text-align: right;
+  line-height: 25px;
+  font-family: NotoSansCJKtc-light;
+
+  .info-normal-price {
+    font-size: 27px;
+    letter-spacing: 3.76px;
+    display: block;
+    color: #000000;
+  }
+  .info-holiday-price {
+    font-size: 16px;
+    letter-spacing: 3.76px;
+    display: block;
+    color: #000000;
+  }
+  .info-normal-text {
+    font-size: 12px;
+    letter-spacing: 3.76px;
+    display: block;
+    color: #a5a5a5;
+  }
+}
+
+.reservation-date-content {
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+.mx-datepicker-main {
+  top: 55% !important;
+  left: 65% !important;
+  .cell {
+    &:hover {
+      background-color: #e7e7e7 !important;
+    }
+  }
+  .today {
+    color: #c0adad !important;
+  }
+  .active {
+    background-color: #666666 !important;
+  }
+
+  .in-range {
+    color: #73879c !important;
+    background-color: #ebebeb !important;
+  }
+}
+
+.mx-datepicker {
+  display: none;
+}
+.weekend-period-content {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #cecece;
+}
+.weekend-period {
+  display: flex;
+  justify-content: space-between;
+}
+.sub-total-content {
+  font-family: NotoSansCJKtc-Medium;
+  font-size: 26px;
+  color: #ff5c5c;
+  letter-spacing: 2.72px;
+  text-align: right;
+  margin-top: 20px;
+}
+.has-danger {
+  input {
+    border: 1px solid #ff5c5c;
+  }
+  .el-input__inner {
+    border: 1px solid #ff5c5c;
+  }
+}
+.error-msg {
+  margin-top: -20px;
+  color: #ff5c5c;
+}
+@media (min-width: 1920px) {
+  .mx-datepicker-main {
+    top: 55% !important;
+    left: 65% !important;
+  }
+  .reservation-date-content {
+    margin-top: 350px;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1919.98px) {
+  .mx-datepicker-main {
+    top: 55% !important;
+    left: 65% !important;
+  }
+  .reservation-date-content {
+    margin-top: 350px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .mx-datepicker-main {
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .mx-datepicker-main {
+    display: none;
+  }
+  .room-price-content {
+    text-align: left;
+    margin-left: 60px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .mx-datepicker-main {
+    display: none;
+  }
+  .room-price-content {
+    text-align: left;
+    margin-left: 60px;
+  }
+}
+@media (max-width: 575.98px) {
+  .mx-datepicker-main {
+    display: none;
+  }
+  .room-price-content {
+    text-align: left;
+    margin-left: 60px;
+  }
+}
