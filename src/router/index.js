@@ -7,7 +7,8 @@ const base = _.get(window, '__INIT_STATE__.state.system.base', '/');
 
 const router = new VueRouter({
   routes,
-  mode: 'history',
+  mode: 'hash',
+  base: '/F2E-hotel',
 });
 
 router.beforeEach((to, from, next) => {
