@@ -50,14 +50,14 @@
           >
           <span class="info-description">{{ description }}</span>
           <span class="info-gap">\\\</span>
-          <el-col :span="12" class="info-check-content">
+          <el-col :span="12" :xs="24" class="info-check-content">
             <span class="info-check">Check In</span>
             <span class="info-time"
               >{{ roomDetail.checkInAndOut.checkInEarly }} －
               {{ roomDetail.checkInAndOut.checkInLate }}</span
             >
           </el-col>
-          <el-col :span="12" class="info-check-content">
+          <el-col :span="12" :xs="24" class="info-check-content">
             <span class="info-check">Check Out</span>
             <span class="info-time">{{
               roomDetail.checkInAndOut.checkOut
@@ -103,6 +103,9 @@
             :open="true"
             :disabled-date="disabledDate"
           ></date-picker>
+          <el-button type="info" class="book-btn" plain @click="onCancel"
+            >返回</el-button
+          >
           <el-button type="info" class="book-btn" @click="onBook"
             >預約</el-button
           >
@@ -112,7 +115,8 @@
     <el-dialog
       title="預約時段"
       :visible.sync="centerDialogVisible"
-      width="40%"
+      width="100%"
+      fullscreen
       :show-close="false"
     >
       <el-form ref="form" label-width="80px" size="mini">
@@ -146,6 +150,7 @@
             :picker-options="pickerOptions"
             :class="{ 'has-danger': error.date.hasError }"
             @focus="error.date.hasError = false"
+            :size="'small'"
           ></el-date-picker>
         </el-form-item>
         <div class="error-msg" v-show="error.date.hasError">
@@ -267,6 +272,9 @@ export default {
     },
     disabledDate(date) {
       return date < new Date(new Date());
+    },
+    onCancel() {
+      this.$router.push({ name: 'Main' });
     },
     onBook() {
       this.weekDayCount = 0;
